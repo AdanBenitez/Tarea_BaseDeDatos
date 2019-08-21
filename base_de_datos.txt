@@ -1,0 +1,382 @@
+3-4
+create database if not exists administracion;
+USE administracion;
+create table usuarios(
+nombre varchar (30),
+clave varchar (10)
+);
+insert into usuarios(nombre,clave) values('MarioPerez','Marito');
+insert into usuarios(nombre,clave) values('Adan Benitez','Jordi');
+select nombre, clave from usuarios;
+
+5
+create database if not exists libros;
+USE libros;
+create table libro(
+	titulo varchar(40),
+	autor varchar(20),
+	editorial varchar(15),
+	precio float,
+	cantidad integer
+);
+insert into libro (titulo,autor,editorial,precio,cantidad)
+  values ('El aleph','Borges','Emece',45.50,100);
+insert into libro (titulo,autor,editorial,precio,cantidad)
+  values ('Alicia en el pais de las maravillas','Lewis Carroll','Planeta',25,200);
+insert into libro (titulo,autor,editorial,precio,cantidad)
+  values ('Matematica estas ahi','Paenza','Planeta',15.8,200);
+  select titulo,autor,editorial,precio,cantidad from libro;
+
+6
+create database if not exists libros;
+USE libros;
+create table libro(
+	titulo varchar(40),
+	autor varchar(20),
+	editorial varchar(15),
+	precio float,
+	cantidad integer
+);
+insert into libro (titulo,autor,editorial,precio,cantidad)
+  values ('El aleph','Borges','Emece',45.50,100);
+insert into libro (titulo,autor,editorial,precio,cantidad)
+  values ('Alicia en el pais de las maravillas','Lewis Carroll','Planeta',25,200);
+insert into libro (titulo,autor,editorial,precio,cantidad)
+  values ('Matematica estas ahi','Paenza','Planeta',15.8,200);
+  select titulo,autor,editorial,precio,cantidad from libro;
+  select editorial,cantidad from libro;
+  select * from libro;
+7
+
+create database if not exists administracion;
+USE administracion;
+create table usuarios(
+nombre varchar (30),
+clave varchar (10)
+);
+insert into usuarios(nombre,clave) values('MarioPerez','Marito');
+insert into usuarios(nombre,clave) values('Adan Benitez','Jordi');
+select nombre, clave from usuarios;
+select nombre, clave from usuarios where nombre='MarioPerez';
+select nombre, clave from usuarios where clave = 'Jordi'
+
+8
+create database if not exists libros;
+USE libros;
+create table libro(
+	titulo varchar(40),
+	autor varchar(20),
+	editorial varchar(15),
+	precio float,
+	cantidad integer
+);
+insert into libro (titulo,autor,editorial,precio) values ('El aleph','Borges','Planeta',12.50);
+insert into libro (titulo,autor,editorial,precio) values ('Martin Fierro','Jose Hernandez','Emece',16.00);
+insert into libro (titulo,autor,editorial,precio) values ('Aprenda PHP','Mario Molina','Emece',35.40);
+insert into libro (titulo,autor,editorial,precio) values ('Cervantes','Borges','Paidos',50.90);
+  select titulo,autor,editorial,precio, from libro;
+  select titulo,autor,editorial,precio from libro where autor <>'borges';
+  select titulo,autor,editorial,precio from libro where precio<10;
+  select titulo,autor,editorial,precio from libro where precio<=30;
+
+9
+
+drop table if exists  usuarios;
+
+create table usuarios (
+  nombre varchar(30),
+  clave varchar(10)
+);
+
+insert into usuarios (nombre, clave) values ('Leonardo','payaso');
+insert into usuarios (nombre, clave) values ('MarioPerez','Marito');
+insert into usuarios (nombre, clave) values ('Marcelo','River');
+insert into usuarios (nombre, clave) values ('Gustavo','River');
+
+set SQL_SAFE_UPDATES=0;
+
+delete from usuarios;
+
+delete from usuarios where nombre='Leonardo';
+
+select nombre,clave from usuarios;
+
+delete from usuarios where clave='River';
+
+select nombre,clave from usuarios;
+
+set SQL_SAFE_UPDATES=1;
+
+10
+drop table if exists  usuarios;
+
+create table usuarios (
+  nombre varchar(30),
+  clave varchar(10)
+);
+
+insert into usuarios (nombre, clave) values ('Leonardo','asiyf');
+insert into usuarios (nombre, clave) values ('MarioPerez','Lanus'); 
+insert into usuarios (nombre, clave) values ('Marcelo','Boca');
+insert into usuarios (nombre, clave) values ('Gustavo','River');
+set SQL_SAFE_UPDATES=0;
+select * from usuarios;
+
+update usuarios set clave='RealMadrid';
+
+select nombre,clave from usuarios;
+
+update usuarios set nombre='GustavoGarcia'
+  where nombre='Gustavo';
+
+update usuarios set nombre='MarceloDuarte', clave='Marce'
+  where nombre='Marcelo';
+
+select nombre,clave from usuarios;
+set SQL_SAFE_UPDATES=1;
+
+11
+create database if not exists usuarios;
+USE usuarios;
+create table usuarios(
+nombre varchar (30),
+clave varchar (10),
+primary key (nombre)
+);
+insert into usuarios(nombre,clave) values('MarioPerez','Marito');
+insert into usuarios(nombre,clave) values('Adan Benitez','Jordi');
+
+insert into usuarios(nombre,clave) values('Adan Benitez','Hola');
+delete from usuarios where nombre = 'adan';
+delete from usuarios;
+
+12
+create database if not exists libros;
+USE libros;
+create table libros(
+codigo int auto_increment,
+  titulo varchar(50),
+  autor varchar(50),
+  editorial varchar(25),
+  primary key (codigo)
+);
+
+describe libros;
+insert into libros (titulo,autor,editorial)
+  values('El aleph','Borges','Planeta');
+  select * from libros libros;
+insert into libros (titulo,autor,editorial)
+  values('Martin Fierro','Jose Hernandez','Emece');
+insert into libros (titulo,autor,editorial)
+  values('Aprenda PHP','Mario Molina','Emece');
+insert into libros (titulo,autor,editorial)
+  values('Cervantes y el quijote','Borges','Paidos');
+insert into libros (titulo,autor,editorial)
+  values('Matematica estas ahi', 'Paenza', 'Paidos');
+
+select codigo,titulo,autor,editorial from libros;
+
+insert into libros (codigo,titulo,autor,editorial)
+  values(6,'Martin Fierro','Jose Hernandez','Paidos');
+
+insert into libros (codigo,titulo,autor,editorial)
+  values(2,'Martin Fierro','Jose Hernandez','Planeta');
+
+insert into libros (codigo,titulo,autor,editorial)
+  values(15,'Harry Potter y la piedra filosofal','J.K. Rowling','Emece');
+
+insert into libros (titulo,autor,editorial)
+  values('Harry Potter y la camara secreta','J.K. Rowling','Emece');
+
+insert into libros (codigo,titulo,autor,editorial)
+  values(0,'Alicia en el pais de las maravillas','Lewis Carroll','Planeta');
+
+insert into libros (codigo,titulo,autor,editorial)
+  values(-5,'Alicia a traves del espejo','Lewis Carroll','Planeta');
+
+select * from libros;
+
+13
+
+drop table if exists libros;
+
+create table libros(
+  codigo integer auto_increment,
+  titulo varchar(50),
+  autor varchar(50),
+  editorial varchar(25),
+  primary key (codigo)
+ );
+
+insert into libros (titulo,autor,editorial)
+  values('Martin Fierro','Jose Hernandez','Planeta');
+insert into libros (titulo,autor,editorial)
+  values('Aprenda PHP','Mario Molina','Emece');
+insert into libros (titulo,autor,editorial)
+  values('Cervantes y el quijote','Borges','Paidos');
+insert into libros (titulo,autor,editorial)
+  values('Matematica estas ahi', 'Paenza', 'Paidos');
+insert into libros (titulo,autor,editorial)
+  values('El aleph', 'Borges', 'Emece');
+
+delete from libros;
+
+select * from libros;
+
+insert into libros (titulo,autor,editorial)
+  values('Antología poetica', 'Borges', 'Emece');
+
+select * from libros;
+
+truncate table libros;
+
+insert into libros (titulo,autor,editorial)
+  values('Antología poetica', 'Borges', 'Emece');
+
+select * from libros;
+
+14
+
+drop table if exists libros;
+
+create table libros(
+  codigo integer auto_increment,
+  titulo varchar(20) not null,
+  autor varchar(30),
+  editorial varchar(15),
+  precio float,
+  primary key(codigo)
+ );
+
+insert into libros (titulo,autor,editorial,precio)
+  values('El aleph','Borges','Planeta',null);
+
+insert into libros (titulo,autor,editorial,precio)
+  values ('Matematica estas ahi','Paenza','Paidos',0);
+
+insert into libros (titulo,autor,editorial,precio)
+  values ('Martin Fierro','Jose Hernandez','',22.50);
+
+insert into libros (titulo,autor,editorial,precio)
+  values ('Harry Potter y la piedra filosofal', 'J.K. Rowling',null,30.00);
+
+select * from libros
+  where precio is null;
+
+select * from libros
+  where precio=0;
+
+select * from libros
+  where editorial is null;
+
+select *from libros
+  where editorial='';
+
+15
+
+drop table if exists libros;
+
+create table libros(
+  codigo integer unsigned auto_increment,
+  titulo varchar(20) not null,
+  autor varchar(30),
+  editorial varchar(15),
+  precio float unsigned,
+  cantidad integer unsigned,
+  primary key (codigo)
+ );
+
+describe libros;
+
+16
+
+drop table if exists visitantes;
+
+create table visitantes(
+  nombre varchar(30),
+  edad integer unsigned,
+  sexo char(1),
+  domicilio varchar(30),
+  ciudad varchar(20),
+  telefono varchar(11),
+  montocompra float unsigned
+ );
+
+describe visitantes;
+
+17
+drop table if exists visitantes;
+create table visitantes(
+  nombre varchar(30),
+  edad integer unsigned,
+  sexo char(1),
+  domicilio varchar(30),
+  ciudad varchar(20),
+  telefono varchar(11),
+  montocompra float unsigned
+ );
+
+describe visitantes;
+
+18
+drop table if exists libros;
+
+create table libros(
+  codigo int unsigned auto_increment,
+  titulo varchar(20) not null,
+  autor varchar(30),
+  editorial varchar(15),
+  precio decimal(5,2) unsigned,
+  cantidad smallint unsigned,
+  primary key (codigo)
+ );
+
+describe libros;
+
+19
+drop table if exists vehiculos;
+
+create table vehiculos(
+  patente char(6) not null,
+  tipo char (4),
+  horallegada time not null,
+  horasalida time
+ );
+
+insert into vehiculos (patente,tipo,horallegada) values ('ACD123','auto','8:30');
+insert into vehiculos (patente,tipo,horallegada) values('BGF234','moto','8:35');
+insert into vehiculos (patente,tipo,horallegada) values('KIU467','auto','9:40');
+
+select * from vehiculos;
+
+update vehiculos set horasalida='11:45'
+  where patente='ACD123';
+
+insert into vehiculos values('LIO987','auto','10',null);
+
+select * from vehiculos;
+
+20
+drop table if exists libros;
+
+SET sql_mode = '';
+
+create table libros(
+  codigo int unsigned auto_increment,
+  titulo varchar(20) not null,
+  autor varchar(30),
+  editorial varchar(15),
+  precio decimal(5,2) unsigned,
+  cantidad mediumint unsigned not null,
+  primary key(codigo)
+ );
+
+insert into libros (titulo,autor,precio)
+  values('El aleph','Borges',23.6);
+
+select * from libros;
+
+insert into libros (autor,editorial,cantidad)
+  values('Borges','Planeta',100);
+
+select * from libros;
